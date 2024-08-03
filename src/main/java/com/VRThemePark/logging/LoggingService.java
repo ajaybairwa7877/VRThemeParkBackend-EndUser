@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import static com.VRThemePark.security.JWTAuthenticationFilter.getClientIp;
 
+//import static com.VRThemePark.security.JWTAuthenticationFilter.getClientIp;
+
 @Service
 @Slf4j
 public class LoggingService {
