@@ -41,8 +41,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 //    @Autowired
 //    private UserDetailsService userDetailsService;
 
-    @Autowired
-    public JwtBlacklistRepository jwtBlacklistRepository;
+//    @Autowired
+//    public JwtBlacklistRepository jwtBlacklistRepository;
 
     @Autowired
     private UserActionActivityRepository userActionActivityRepository;
