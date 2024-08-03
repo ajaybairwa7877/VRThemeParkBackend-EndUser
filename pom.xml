@@ -96,10 +96,9 @@
 		</dependency>
 
 		<dependency>
-		    	<groupId>mysql</groupId>
-		    	<artifactId>mysql-connector-j</artifactId>
-		    	<version>8.0.33</version> <!-- Use a version compatible with your MySQL server -->
-			<scope>runtime</scope>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.33</version>
 		</dependency>
 
 	</dependencies>
