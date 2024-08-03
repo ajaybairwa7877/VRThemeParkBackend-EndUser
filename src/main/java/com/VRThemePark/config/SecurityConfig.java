@@ -1,7 +1,7 @@
 package com.VRThemePark.config;
 
 import com.VRThemePark.security.JWTAthenticationEntryPoint;
-import com.VRThemePark.security.JWTAuthenticationFilter;
+//import com.VRThemePark.security.JWTAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +17,8 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
     @Autowired
     private JWTAthenticationEntryPoint point;
-    @Autowired
-    private JWTAuthenticationFilter filter;
+//    @Autowired
+//    private JWTAuthenticationFilter filter;
 
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
