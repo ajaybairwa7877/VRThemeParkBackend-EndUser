@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration debug="false" scan="false">
+
+	<appender name="webservicesResReqLogging"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>logs/services/reqres-api.log</File>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				logs/archive/reqres-%d.%i.log.gz
+			</FileNamePattern>
+			<TimeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>15MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level
+				%logger{0}.%M:%line - %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="aspectAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>logs/services/aspect.log</File>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				${catalina.base}/logs/archive/aspect-%d.%i.log.gz
+			</FileNamePattern>
+			<TimeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>15MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%date %level [%thread] %logger %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="applicationLoggging"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>logs/services/app.log</File>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				logs/archive/app-%d.%i.log.gz
+			</FileNamePattern>
+			<TimeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>15MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%date %level [%thread] %logger %msg%n</Pattern>
+		</encoder>
+	</appender>
+	<conversionRule conversionWord="clr"
+		converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+
+	<conversionRule conversionWord="wex"
+		converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+
+	<conversionRule conversionWord="wEx"
+		converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+	<property name="CONSOLE_LOG_PATTERN"
+		value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}})
+{faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39})
+{cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+
+	
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+	</root>
+	<!-- <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter"> 
+		<level value="DEBUG" /> <appender-ref ref="webservicesResReqLogging"/> </logger> -->
+
+	<logger name="aspectLogger">
+		<level value="DEBUG" />
+		<appender-ref ref="aspectAppender" />
+	</logger>
+
+	<logger name="com.VRThemePark.controllers">
+		<level value="DEBUG" />
+		<appender-ref ref="applicationLoggging" />
+	</logger>
+
+	<logger name="com.VRThemePark.security">
+		<level value="DEBUG" />
+		<appender-ref ref="webservicesResReqLogging" />
+	</logger>
+	
+
+	<logger name="com.VRThemePark.service">
+		<level value="DEBUG" />
+		<appender-ref ref="applicationLoggging" />
+	</logger>
+
+
+</configuration>
